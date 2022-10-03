@@ -1,0 +1,105 @@
+<div fxLayout="row" fxLayoutGap="12px" [style.margin-top]="'12px'">
+  <mat-card class="card1">
+
+    <p>
+      <button style="background-color: transparent;border: none;">
+        <svg style="height:25px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+             class="bi bi-filter" viewBox="0 0 16 16">
+          <path
+            d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      </button>
+      Filters
+    </p>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>model</mat-label>
+      <input matInput type="search" (ngModelChange)="searchByModel(key.value)" #key="ngModel" ngModel name="key"
+             placeholder="Search Model" >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Volume</mat-label>
+      <input matInput type="search" (ngModelChange)="searchByVolume(key.value)" #key="ngModel" ngModel name="key"
+             placeholder="Search Volume" >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Energy</mat-label>
+      <input matInput type="search" (ngModelChange)="searchByEnergy(key2.value)" #key2="ngModel" ngModel name="key2"
+             placeholder="Search Energy" >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Gear Box</mat-label>
+      <input matInput type="search" (ngModelChange)="searchByGearBox(key1.value)" #key1="ngModel" ngModel name="key1"
+             placeholder="Search GearBox" >
+    </mat-form-field>
+    <div class="custom-slider">
+      <div class="with-icon">
+        <span class="pl-2 text-x1">Budget/Day</span>
+      </div>
+      <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+                  (userChangeEnd)="filterByPrice(keyPrice)" #keyPrice></ngx-slider>
+    </div>
+  </mat-card>
+
+  <mat-card class="card2" style="background-color:rgba(0,0,0,0.13);">
+    <div class="container" id="main-container">
+
+        <div *ngFor="let vehicle of vehicles" >
+          <mat-card style="margin: 8px;width :250px;float:left">
+            <mat-card-title>{{vehicle.model}} {{vehicle.name}}</mat-card-title>
+            <div class="col-6">
+              <a href=""><img *ngIf="vehicle.picture" [src]="getSrcFromFile(vehicle.picture)" alt=""
+                              class="img-fluid rounded-circle w-100"></a>
+            </div>
+            <mat-card-content>
+            <div>
+            <mat-icon style="color:rgba(239,239,3,0.75);margin-top:10px;"> local_gas_station</mat-icon> {{vehicle?.energy}}
+            </div>
+            <div>
+            <p class="m-0"><mat-icon style="color:rgba(239,239,3,0.75);margin-top:10px;">drive_eta</mat-icon>{{vehicle?.gearBox}}</p>
+            </div>
+            <div>
+
+              <p><mat-icon style="color:rgba(239,239,3,0.75);margin-top:10px;">
+                airline_seat_recline_extra</mat-icon>{{vehicle?.volumeVeh}}
+                </p>
+            </div>
+            <div>
+              <mat-icon style="color:rgba(239,239,3,0.75);margin-top:10px;">
+                airline_seat_recline_extra</mat-icon>
+              {{vehicle?.ranking}}
+            </div>
+            <div>
+              <mat-icon  style="color:rgba(239,239,3,0.75);margin-top:10px;"> insert_comment</mat-icon><p>{{vehicle?.description}}</p>
+            </div>
+
+            <div class="column col-gapless">
+              <div class="column text-2xs">
+                <div class="text-right text-primary">
+                  <br>
+                  <b class="text-5x1">{{vehicle?.price}}
+
+                    Dt/day</b>
+                  <hr>
+                </div>
+
+
+              </div>
+            </div>
+            </mat-card-content>
+            <button mat-icon-button color="primary" (click)="reservation(vehicle)">
+              <mat-icon>calendar_today</mat-icon>
+              reserve
+            </button>
+          </mat-card>
+        </div>
+
+      </div>
+    <div *ngIf="vehicles?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">NO VEHICLES!</h4>
+        <p>No Vehicles were found.</p>
+      </div>
+    </div>
+  </mat-card>
+</div>

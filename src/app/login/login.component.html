@@ -1,0 +1,51 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+</head>
+<body>
+<div *ngIf="isLoggedIn">
+<app-spinner></app-spinner>
+</div>
+<div class="login-form">
+  <mat-card class="example-card" *ngIf="!isLoggedIn">
+    <mat-card-header>
+      <mat-card-title style="margin-left: 100px;color:#f3e330;">Welcome</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="registerForm " (ngSubmit)="onLogin(registerForm.value)" >
+        <mat-form-field class="example-full-width" style="padding-left: 20%;color:white;">
+          <mat-label style="color:white;">Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email address" type="email" required email>
+          <mat-error>Email is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="padding-left: 20%;color: white;">
+          <mat-label style="color:white;">Password </mat-label>
+          <input formControlName="password" matInput placeholder="Password" type="password" minlength="8" required>
+          <mat-error>Password is required</mat-error>
+        </mat-form-field>
+        <br>
+        <div class="row">
+          <button mat-button [disabled]="!registerForm.valid">Login</button>
+        </div>
+        <br>
+        <span class="help-block" style="color: rgba(255,0,0,0.84)"
+              *ngIf="isLoginFailed">
+                    Login failed: {{ errorMessage }}
+                  </span>
+        <br>
+        <div class="row">
+          <p style="color:white;">Don't have an account? <a href="/signup">Register Here</a></p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+          <a (click)="openDialog()" style="color:white;margin-left:90px;">Forgot your password ?</a>
+        </div>
+        <br>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+</body>
+<p-toast position="top-right"  [showTransformOptions]="'translateX(100%)'"></p-toast>

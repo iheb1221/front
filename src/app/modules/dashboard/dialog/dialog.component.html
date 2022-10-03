@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Add user</h1>
+<div mat-dialog-content>
+  <form [formGroup]="registerForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input formControlName="firstName" matInput type="text" placeholder="first name" required>
+      <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error >please enter first name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="lastName" matInput type="text" placeholder="last name" required>
+      <mat-icon matSuffix>account_circle</mat-icon>
+      <mat-error>please enter first name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput type="email" placeholder="Ex. pat@example.com" required email>
+      <mat-icon matSuffix> email</mat-icon>
+      <mat-error >please enter a valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password" placeholder="your password" minlength="8" required>
+      <mat-icon matSuffix>https</mat-icon>
+      <mat-hint>Password must be at least 8 characters long</mat-hint>
+      <mat-error >Password is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="appUserRole">
+        <mat-option value="USER">USER</mat-option>
+        <mat-option value="ADMIN">ADMIN</mat-option>
+      </mat-select>
+      <mat-error>Role is required</mat-error>
+     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Telephone</mat-label>
+      <span matPrefix>+216 &nbsp;</span>
+      <input formControlName="phoneNumber" type="number" matInput placeholder="Ex. 99999999" pattern="[0-9]{8,8}" required>
+      <mat-icon matSuffix>call</mat-icon>
+      <mat-error > phone number must be 8 numbers long </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <mat-select formControlName="city">
+        <mat-option *ngFor="let city of cities" [value]="city.value">
+          {{city.viewValue}}
+        </mat-option>
+               <mat-error> city is required </mat-error>-->
+      </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions [align]="'end'">
+      <mat-slide-toggle style="padding-bottom:10px" [(ngModel)]="checked" formControlName="enabled">Active
+        : {{checked}}</mat-slide-toggle>
+      <br>
+    </div>
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close> close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" type="submit"
+              (click)="add()" [disabled]="registerForm.invalid"> {{actionBtn}} </button>
+    </div>
+  </form>
+</div>

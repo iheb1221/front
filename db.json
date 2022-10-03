@@ -1,0 +1,14 @@
+{
+    "posts":
+    [
+      {
+        "id": 1, "firstName": "mekni",
+         "lastName": "iheb","email":"iheb@gmail.com",
+         "password": "12345","phoneNumber": 90475554,"city": "Beja"
+      }
+    ],
+    "signupUser": [
+      { "email": "iheb@gmail.com","password": "12345" }
+    ],
+    "profile": { "name": "typicode" }
+}

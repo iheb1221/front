@@ -1,0 +1,91 @@
+<div class="container">
+  <div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="accent" (click)="openDialog()"><mat-icon>person_add</mat-icon></button>
+    <button mat-raised-button color="warn" style="margin-left: 8px;" (click)="exporter.exportTable('xlsx',{fileName:'Reservation Table'})"><mat-icon> save_alt</mat-icon></button>
+  </div>
+  <div>
+    <div style="margin-top: 10px">
+      <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      </mat-form-field>
+
+      <div class="mat-elevation-z8">
+        <table mat-table  matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+
+          <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
+            <td mat-cell *matCellDef="let row"> {{row.model}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row"> {{row.name}}</td>
+          </ng-container>
+
+<!--          <ng-container matColumnDef="picture">-->
+<!--            <th mat-header-cell *matHeaderCellDef mat-sort-header> Picture</th>-->
+<!--            <td mat-cell *matCellDef="let row"> {{row.picture}} </td>-->
+<!--          </ng-container>-->
+
+          <ng-container matColumnDef="ranking">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ranking</th>
+            <td mat-cell *matCellDef="let row"> {{row.ranking}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="active">
+            <th  mat-header-cell *matHeaderCellDef mat-sort-header> Active</th>
+            <td class="th1" mat-cell *matCellDef="let row"> {{row.active}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="volume">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Volume</th>
+            <td class="th1" mat-cell *matCellDef="let row "> {{row.volume}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="energy">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Energy</th>
+            <td class="th1" mat-cell *matCellDef="let row"> {{row.energy}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price</th>
+            <td class="th1" mat-cell *matCellDef="let row"> {{row.price}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="gearBox">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Gear Box</th>
+            <td class="th1" mat-cell *matCellDef="let row"> {{row.gearBox}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Description</th>
+            <td class="th1" mat-cell *matCellDef="let row"> {{row.description}} </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
+            <td class="th1" mat-cell *matCellDef="let row">
+              <button mat-icon-button color="primary" (click)="onUpdateVehicle(row)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="onDeleteVehicle(row.id)" mat-icon-button color="warn" >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[3,5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,68 @@
+/*.example-card {*/
+/*  max-width: 450px;*/
+/*}*/
+
+/*.example-header-image {*/
+/*  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');*/
+/*  background-size: cover;*/
+/*}*/
+/*.content{*/
+/*  text-align: -webkit-center;*/
+/*}*/
+/*.example-form {*/
+/*  min-width: 150px;*/
+/*  max-width: 500px;*/
+/*  width: 100%;*/
+/*}*/
+
+.example-full-width {
+  width: 100%;
+}
+
+/*td {*/
+/*  padding-right: 8px;*/
+/*}*/
+::ng-deep.custom-style{
+  background-color: #ffffff;
+  color: #0b7bb0;
+}
+::ng-deep.custom-style-{
+  background-color: #ffffff;
+  color: #ff130e;
+}
+button{
+  text-align: center;
+  background-color:#f3e330;
+  padding-left:40%;
+  padding-right:60%;
+}
+.example-card {
+  max-width: 400px;
+}
+body{
+  margin:0;
+  padding:0;
+  background-image:url("https://www.fly-car.fr/assets/images/location-voiture-1.jpg");
+  background-position:center center ;
+  background-repeat :no-repeat;
+  background-size:cover;
+  -webkit-background-size: cover;
+  background-attachment:fixed;
+}
+mat-card{
+  border-radius: 5%;
+  position:absolute;
+  top:20%;
+  left:40%;
+  background: rgba(0, 0, 0, 0.8);
+}
+mat-label{
+  color:white;
+}
+::ng-deep.custom-style{
+  background-color: rgb(18, 217, 23);
+  color: rgba(0, 0, 0, 0.55);
+}
+mat-form-field{
+  color:white;
+}

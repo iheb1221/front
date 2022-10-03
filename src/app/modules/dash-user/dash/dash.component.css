@@ -1,0 +1,28 @@
+.nav-container{
+  display: grid;
+  grid-template-columns: 90% 10%;
+  width: 100%;
+}
+.mat-drawer-content{
+  height: 80vh;
+  padding: 1rem;
+}
+.mat-toolbar{
+  background-color: rgba(93, 255, 95, 0);
+  color: rgba(0, 0, 0, 0.55);
+}
+.container{
+  width: 100%;
+}
+.card1{
+  width:20%;
+  float:left;
+  margin:0;
+  background-color: transparent;
+}
+.card2{
+  float:right;
+  width:79.5%;
+  margin:0;
+
+}

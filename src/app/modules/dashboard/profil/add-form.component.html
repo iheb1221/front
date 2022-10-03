@@ -1,0 +1,85 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Edit Profile</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="registerForm">
+              <div class="row">
+                <div class="col-md-5">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="firstName" [(ngModel)]="loggedUser.firstName" matInput
+                           placeholder="Fist Name" type="text" required>
+                    <mat-error>First name is required</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="lastName" [(ngModel)]="loggedUser.lastName" matInput placeholder="Last Name"
+                           type="text" required>
+                    <mat-error>Last name is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-11">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="email" matInput placeholder="Email address" [(ngModel)]="loggedUser.email"
+                           type="email" required email>
+                    <mat-error>Email is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-11">
+                  <mat-form-field class="example-full-width">
+                    <input formControlName="password" [(ngModel)]="loggedUser.password" matInput placeholder="Password"
+                           type="password" minlength="8" required>
+                    <mat-error>Password is required</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <mat-select formControlName="city" [(ngModel)]="loggedUser.city" placeholder="City" required>
+                      <mat-option *ngFor="let city of cities" [value]="city.value">
+                        {{city.viewValue}}
+                      </mat-option>
+                      <!--                           <mat-error *ngIf="registerForm.controls.city.touched && registerForm.controls.city.errors.required"> city is required </mat-error>&ndash;&gt;-->
+                    </mat-select>
+                    <mat-error>City is required</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-7">
+                  <mat-form-field class="example-full-width">
+                    <span matPrefix>+216 &nbsp;</span>
+                    <input formControlName="phoneNumber" matInput placeholder="Phone Number"
+                           [(ngModel)]="loggedUser.phoneNumber" type="number" pattern="[0-9]{8,8}" required>
+                    <mat-error>Phone number is required</mat-error>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="update()"
+                     >Update Profile
+              </button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <img class="img" src="./assets/img/users.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>Add vehicle</h1>
+<div mat-dialog-content>
+  <form [formGroup]="registerForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Model</mat-label>
+      <mat-select formControlName="model">
+        <mat-option *ngFor="let model of categoryList" [value]="model.name">
+          {{model.name}}
+        </mat-option>
+      </mat-select>
+        <mat-error>model is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>name</mat-label>
+      <input matInput type="text" formControlName="name" required>
+      <mat-error>name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Ranking</mat-label>
+      <mat-select formControlName="ranking">
+        <mat-option *ngFor="let r of rank" [value]="r.value">
+          {{r.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error>ranking is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Volume</mat-label>
+      <mat-select formControlName="volumeVeh">
+        <mat-option *ngFor="let volume of volumes" [value]="volume.value">
+          {{volume.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error>volume is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Energy</mat-label>
+      <mat-select formControlName="energy">
+        <mat-option *ngFor="let item of energies" [value]="item.value">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error>energy is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Gear Box</mat-label>
+      <mat-select formControlName="gearBox">
+        <mat-option *ngFor="let item of gearBoxs" [value]="item.value">
+          {{item.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error>gear Box is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" placeholder="Ex. 15" maxlength="5">
+      <mat-error>price is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" formControlName="description"></textarea>
+      <mat-error>description is required</mat-error>
+    </mat-form-field>
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden formControlName="picture" (change)="selectFile($event)" #fileInput type="file">
+    <span class="file-name">{{file?.name}}</span>
+    <div mat-dialog-actions [align]="'end'">
+      <mat-slide-toggle style="padding-bottom:10px" [(ngModel)]="checked" formControlName="active">Active
+        : {{checked}}</mat-slide-toggle>
+      <br>
+    </div>
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close> close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" type="submit" (click)="add()"
+              [disabled]="registerForm.invalid"> {{actionBtn}} </button>
+    </div>
+  </form>
+</div>

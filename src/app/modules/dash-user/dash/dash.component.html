@@ -1,0 +1,41 @@
+<mat-toolbar style="background-color:black;">
+  <div class="nav-container">
+    <div style="margin-top:15px;">
+      <span><img src="assets/img/flycar.png" height="30px" routerLink="vehicles"></span>
+    </div>
+    <div *ngIf="isLogged">
+      <button style="float: right;margin-top:10px" mat-icon-button
+              [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <!--        <mat-icon>face</mat-icon>-->
+        <span>
+          <img src="assets/img/icon.png" height="30px">
+        </span>
+      </button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item routerLink="setting">
+          <mat-icon>perm_identity</mat-icon>
+          <span>Update profile</span>
+        </button>
+        <button mat-menu-item routerLink="myReservation">
+          <mat-icon>calendar_today</mat-icon>
+          <span>My reservations</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+  <mat-drawer-content>
+    <router-outlet>
+    </router-outlet>
+  </mat-drawer-content>
+  <footer>
+    <app-maps></app-maps>
+  </footer>
+
+</mat-drawer-container>

@@ -1,0 +1,25 @@
+::ng-deep.custom-style{
+  background-color: #12d917;
+  color: #ffffff;
+}
+::ng-deep.custom-style-{
+  background-color: #ff130e;
+  color: #ffffff;
+}
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+  padding-left: 8px;
+}
+
+.th1 {
+  padding-left: 8px;
+}

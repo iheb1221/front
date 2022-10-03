@@ -1,0 +1,87 @@
+<h1 mat-dialog-title style="height:50%">Reservation</h1>
+<div mat-dialog-content>
+  <mat-horizontal-stepper [labelPosition]="'bottom'">
+    <mat-step [stepControl]="myForm" errorMessage="ERROR!" [editable]="true" [completed]="completed">
+      <form [formGroup]="myForm">
+        <ng-template matStepLabel>First step</ng-template>
+        <br>
+        <div>
+          <label>Enter a date range</label> <br>
+          <p-calendar formControlName="dateRange" selectionMode="range" [(ngModel)]="rangeDates" [minDate]="minDate"
+                      [disabledDates]="invalidDates" [readonlyInput]="true" inputId="disabledays"
+                      (click)="calculatePrice()"></p-calendar>
+        </div>
+        <!--      <mat-form-field appearance="fill">-->
+        <!--        <mat-label>Enter a date range</mat-label>-->
+        <!--        <mat-date-range-input  [rangePicker]="picker" [min]="minDate" >-->
+        <!--          <input matStartDate placeholder="Start date" formControlName="start">-->
+        <!--          <input matEndDate placeholder="End date" formControlName="end" >-->
+        <!--        </mat-date-range-input>-->
+        <!--        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>-->
+        <!--        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+        <!--        <mat-date-range-picker #picker ></mat-date-range-picker>-->
+        <!--      </mat-form-field>-->
+
+        <br>
+        <br>
+        <input type="number" class="form-control" formControlName="sum" [(ngModel)]="sum" placeholder="Sum">
+        <br>
+        <br>
+        Sum =  {{sum | currency: 'DT'}}
+        <div matDialogActions align="end">
+          <button mat-button matStepperNext (click)="send()" style="margin-bottom:20%;">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="paymentForm" [completed]="completed1">
+      <form [formGroup]="paymentForm">
+        <ng-template matStepLabel>Payment Information</ng-template>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Card Holder Name</mat-label>
+          <input matInput formControlName="cardName" type="text" placeholder="Ex. mekni iheb"
+                 [(ngModel)]="cardNa" required>
+          <mat-error>Card name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label> cart Number</mat-label>
+          <input matInput formControlName="cardNumber" [textMask]="{mask: numberMask}" [(ngModel)]="cardN"
+                 placeholder="Ex. 9999-9999-9999-9999"
+                 required>
+          <mat-error>Card Number is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>date</mat-label>
+          <input matInput formControlName="date" [textMask]="{mask: dateMask}" placeholder="Ex. 12-05"
+                 [(ngModel)]="cardDate" required>
+          <mat-error>Date is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>CVV</mat-label>
+          <input matInput formControlName="cvv" [textMask]="{mask: cvvMask}" placeholder="Ex. 123"
+                 [(ngModel)]="cardCvv" required>
+          <mat-error>CVV is required</mat-error>
+        </mat-form-field>
+        <div matDialogActions align="end">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="step2()" >Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <br>
+      <p>Last Name : {{lastName}}</p>
+      <p>First Name : {{firstName}} </p>
+      <p>Email : {{email}}</p>
+      <p>Vehicle : {{vehicleModel}} {{vehicleName}}</p>
+      <p>Price : {{priceVeh}}</p>
+      <p>Card Name : {{cardNa}}</p>
+      <p>Card Number : {{cardN}}</p>
+      <div matDialogActions align="end">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button mat-dialog-close>Done</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

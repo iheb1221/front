@@ -1,0 +1,43 @@
+
+
+<!--<form class="container"  [formGroup]="registerForm">-->
+<!--      <mat-form-field style="width: 100%;margin-left: 8px;">-->
+<!--        <input matInput placeholder="age" formControlName="age">-->
+<!--      </mat-form-field>-->
+<!--      <br>-->
+<!--      <mat-form-field style="width: 100%;margin-left: 8px;">-->
+<!--        <input matInput placeholder="model" formControlName="model">-->
+<!--      </mat-form-field>-->
+<!--&lt;!&ndash;        <input matInput [value]="fileName"/>&ndash;&gt;-->
+<!--      <input formControlName="file"-->
+<!--        type="file"-->
+<!--        id="fileInput"-->
+<!--        (change)="selectFile($event)"-->
+<!--        name="fileInput"-->
+<!--      />-->
+<!--        <button-->
+<!--          mat-flat-button-->
+<!--          color="primary"-->
+<!--          [disabled]="!currentFile"-->
+<!--          (click)="upload()"-->
+<!--        >-->
+<!--          Upload-->
+<!--        </button>-->
+
+<!--</form>-->
+
+
+<!--<mat-card class="example-card">-->
+<!--  <mat-card-header>-->
+<!--    <mat-card-title>List of Files</mat-card-title>-->
+<!--  </mat-card-header>-->
+<!--  <mat-card-content>-->
+<!--    <mat-list role="list">-->
+<!--      <mat-list-item role="listitem" *ngFor="let file of fileInfos | async">-->
+<!--        <a href="{{ file.url }}">{{ file.name }}</a>-->
+<!--      </mat-list-item>-->
+<!--    </mat-list>-->
+<!--  </mat-card-content>-->
+<!--</mat-card>-->
+<button class="mat-button" (click)="addSingle()"> click</button>
+<p-toast position="top-left"></p-toast>

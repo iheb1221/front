@@ -1,0 +1,64 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+</head>
+<body>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title style="margin-left: 100px;color:#f3e330;">Create an account</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="myForm">
+
+      <mat-form-field class="example-full-width">
+        <mat-label> First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="Fist Name" type="text" required>
+        <mat-error>First name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Last Name" type="text" required>
+        <mat-error>Last name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Email address" type="email" required email>
+        <mat-error>Email is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput placeholder="Password" type="password" minlength="8" required>
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone Number</mat-label>
+        <span matPrefix style="color:white;">+216 &nbsp;</span>
+        <input formControlName="phoneNumber" matInput placeholder="Phone Number" type="number" pattern="[0-9]{8,8}"
+               required>
+        <mat-hint style="color:white;">phone number must be 8 numbers </mat-hint>
+        <mat-error>Phone number is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <mat-select style="color:white;" formControlName="city" placeholder="City" required>
+          <mat-option *ngFor="let city of cities" [value]="city.value">
+            {{city.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error>City is required</mat-error>
+      </mat-form-field>
+      <div class="row">
+        <button mat-button (click)="onSignup(myForm.value)" [disabled]="myForm.invalid">Register</button>
+      </div>
+      <span *ngIf="isLoaded" style="color: red" class="help-block"> Email is already exist !</span>
+
+      <p  style="color:white;">Have already an account? <a href="/login">
+            Login here</a></p>
+    </form>
+  </mat-card-content>
+</mat-card>
+</body>

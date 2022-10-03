@@ -1,0 +1,16 @@
+.mat-form-field{
+  width: 100%;
+  margin-left: 8px;
+}
+button{
+  background-color: #f3e330;
+  width:130px;
+  padding-left:20px;
+}
+button:hover{
+  color:white;
+  background-color: #4f4b4b;
+}
+p-calendar{
+  width:100%;
+}
